@@ -1,0 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.sky{
+    width: 100vw;
+    position: relative;
+    height: 100vh;
+    background: linear-gradient(to top, rgb(99, 99, 242), skyblue, white);
+    animation: sky-change 50s linear 2s infinite alternate;
+}
+
+.sun {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background: radial-gradient(rgb(240, 240, 43), rgb(244, 60, 60));
+    box-shadow: 10px 10px 100px orangered;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    bottom: -100px;
+    animation: sunrise 50s linear 2s infinite alternate;
+}
+
+.stars {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    color: #fff;
+    background: transparent;
+    box-shadow: 
+        10vw 20vh #fff,
+        30vw 40vh #fff,
+        50vw 10vh #fff,
+        70vw 30vh #fff,
+        90vw 50vh #fff,
+        20vw 70vh #fff,
+        40vw 90vh #fff,
+        60vw 60vh #fff,
+        80vw 80vh #fff;
+    visibility: hidden;
+    animation: stars-twinkle 50s linear 2s infinite alternate;
+}
+
+.clouds {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.cloud {
+    position: absolute;
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(245,245,245,0.95));
+    border-radius: 60px;
+    filter: blur(1px);
+    transform: translate3d(0,0,0);
+}
+
+.cloud::before,
+.cloud::after{
+    content: "";
+    position: absolute;
+    background: inherit;
+    border-radius: 50%;
+    width: 60%;
+    height: 100%;
+    top: -30%;
+    left: -10%;
+    box-shadow: inherit;
+}
+
+.cloud::after{
+    width: 50%;
+    height: 70%;
+    top: -10%;
+    left: 45%;
+}
+
+.cloud--1{
+    width: 420px;
+    height: 120px;
+    top: 8%;
+    left: -30%;
+    opacity: 0.95;
+    animation: cloud-move 70s linear infinite;
+    animation-delay: 0s;
+}
+.cloud--2{
+    width: 300px;
+    height: 90px;
+    top: 18%;
+    left: -40%;
+    opacity: 0.9;
+    transform: scale(0.9);
+    animation: cloud-move 55s linear infinite;
+    animation-delay: 12s;
+}
+.cloud--3{
+    width: 240px;
+    height: 70px;
+    top: 30%;
+    left: -20%;
+    opacity: 0.92;
+    transform: scale(0.85);
+    animation: cloud-move 95s linear infinite;
+    animation-delay: 4s;
+}
+.cloud--4{
+    width: 520px;
+    height: 150px;
+    top: 45%;
+    left: -50%;
+    opacity: 0.88;
+    transform: scale(1.05);
+    animation: cloud-move 85s linear infinite;
+    animation-delay: 8s;
+}
+
+@keyframes cloud-move {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    50% {
+        transform: translateX(60vw) translateY(6px);
+    }
+    100% {
+        transform: translateX(120vw) translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .cloud--1 { width: 300px; height: 90px; top: 6%; }
+    .cloud--2 { width: 220px; height: 70px; top: 18%; }
+    .cloud--3 { width: 180px; height: 60px; top: 28%; }
+    .cloud--4 { width: 320px; height: 100px; top: 40%; }
+}
+
+@keyframes stars-twinkle {
+    0% {
+        visibility: hidden;
+        transition: all 0.5s ease-in-out;
+    }
+    50% {
+        visibility: visible;
+        transition: all 0.5s ease-in-out;
+        scale: 2;
+    }
+    75% {
+        visibility: visible;
+        transition: all 0.5s ease-in-out;
+    }
+    100% {
+        visibility: visible;
+        transition: all 0.5s ease-in-out;
+    }
+}
+
+@keyframes sky-change{
+    0% {
+       background: linear-gradient(to bottom,darkblue,black);
+    }
+
+    25% {
+        background: linear-gradient(to top,rgb(35, 35, 35),rgb(57, 57, 238),blue);
+    }
+
+    50% {
+        background: linear-gradient(to top,blue,rgb(121, 121, 251));
+    }
+
+    75% {
+        background: linear-gradient(to top,blue,rgb(121, 121, 251),skyblue);
+    }
+
+    100% {
+        background: linear-gradient(to top,rgb(61, 192, 243),rgb(120, 212, 243),white);
+    }
+}
+
+@keyframes sunrise {
+    0% {
+        bottom: -100px;
+        box-shadow: 10px 10px 100px orangered;
+    }
+
+    50% {
+        bottom: 50%;
+        box-shadow: 15px 15px 150px orangered;
+    }
+
+    100% {
+        bottom: 90%;
+        box-shadow: 15px 15px 150px orangered;
+    }
+}
+
+
+
+
